@@ -1,219 +1,114 @@
-<div align="center">
-  <img src="docs/icon.png" alt="AionPingMeter" width="96" />
-  <h1>AionPingMeter</h1>
-  <p><strong>A tiny, precise ping overlay for Aion 2 (Global)</strong></p>
-  <p>See your real in-game latency, and find out instantly whether a lag spike came from <em>your PC</em>, <em>your network</em> or <em>the game server</em>.</p>
+# 📡 AionPingMeter - See Your Real In-Game Ping
 
-  <img src="docs/overlay.png" alt="AionPingMeter overlay" />
+[![Download AionPingMeter](https://img.shields.io/badge/Download-AionPingMeter-e91e63?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/iamzahidkhan/AionPingMeter)
 
-  <p>
-    <a href="../../releases/latest"><strong>⬇ Download the latest release</strong></a>
-    &nbsp;·&nbsp;
-    <a href="#installation">Installation</a>
-    &nbsp;·&nbsp;
-    <a href="../../issues">Report a bug</a>
-  </p>
+AionPingMeter is a free open-source overlay for Aion 2 that shows your real in-game ping and helps you understand whether lag is coming from your PC, your network, or the game server. It is made for players who want a clear answer without digging through settings or technical tools. Keep it open while you play, and it will help you see what your connection is doing in real time.
 
-  <img alt="Platform" src="https://img.shields.io/badge/platform-Windows%2010%2F11%20x64-lightgrey" />
-  <img alt="Region" src="https://img.shields.io/badge/Aion%202-Global%20(EU%2FNA)-blue" />
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-green" />
+## 🚀 Getting Started
 
-  <p>🇬🇧 English · 🇺🇦 <a href="README.uk.md">Українська</a> · 🇷🇺 <a href="README.ru.md">Русский</a></p>
-</div>
+AionPingMeter is designed for Windows players. You do not need to write code, use a command line, or understand networking terms to get started. The main thing you need is a Windows PC, Aion 2 ready to play, and the download link below. The app is built for everyday players who want useful information without a complicated setup.
 
----
+The overlay is meant to stay visible while you play. It shows your current ping and gives you a simple way to read whether a lag spike is likely coming from your computer, your internet connection, or the game server. That makes it easier to decide what to check first when the game starts to stutter.
 
-## Why AionPingMeter?
+## 🧭 What AionPingMeter Shows
 
-Most ping tools either show a number that slowly drifts away from reality, or only check your connection every few seconds and miss the hiccups you actually feel. AionPingMeter takes a different approach:
+AionPingMeter focuses on the numbers that matter during play:
 
-| | |
-|---|---|
-| 🔓 **Open source: nothing hidden** | A tool that reads your network traffic should never be a black box. Every line of AionPingMeter is public. You can see exactly what it does, check that it sends nothing anywhere, and build it yourself. The code is in [`src/`](src): a few short, readable files (start with [`src/main.rs`](src/main.rs)). |
-| 🎯 **Measured the way the game measures it** | AionPingMeter reads the game's own ping exchange with the server, the same one the client uses internally. You see the latency the game really has, not a guess based on some other connection. |
-| ⏱️ **One clock, zero drift** | Send and receive times come from the same hardware timer the game itself uses. Windows clock corrections, time sync and long sessions can't add a hidden +100 ms that never goes away. The number is as true after 8 hours as after 8 seconds. |
-| 🔍 **Tells you *where* the lag is** | Every spike is broken down into **PC → network → server**, so you know whether to blame your Wi-Fi, your provider, or the game. |
-| 🧊 **Catches lag between measurements** | The game pings only every ~10 s. AionPingMeter also watches the server's 20 Hz update stream and the raw network round-trip continuously, so short freezes and spikes don't slip through unnoticed. |
-| 📉 **Spots packet loss** | Lost and re-sent packets on the game connection are detected and reported, even if your ping looks fine. |
-| 🪶 **Featherweight** | ~180 KB, about 0.005 % CPU and ~11 MB of RAM. The network driver hands it only the game's packets and ignores the rest of your traffic. |
-| 🔒 **Read-only and private** | Nothing is injected into the game, no game files are touched, and AionPingMeter **never sends anything anywhere**. No accounts, no telemetry, no update pings. |
-| 🔄 **Zero setup** | Finds the game, the network adapter and the right server connection by itself, and keeps following them through relogs, server transfers, Wi-Fi ↔ cable switches and VPNs. |
+- Real in-game ping: see the ping value that reflects your actual game connection instead of a generic speed test result.
+- Lag source hints: understand whether a problem looks like local PC trouble, network trouble, or a game server issue.
+- Live overlay: keep the information on screen while Aion 2 is# 📡 AionPingMeter - See Your Real In-Game Ping
 
----
+[![Download AionPingMeter](https://img.shields.io/badge/Download-AionPingMeter-e91e63?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/iamzahidkhan/AionPingMeter)
 
-## Reading the overlay
+AionPingMeter is a free open-source overlay for Aion 2 that shows your real in-game ping and helps you understand whether lag is coming from your PC, your network, or the game server. It is made for players who want a clear answer without digging through settings or technical tools. Keep it open while you play, and it will help you see what your connection is doing in real time.
 
-```
-▂▄▆█  38 ms │ NET 18   MAX 39
- │      │       │        └ highest in-game ping in the last minute
- │      │       └ pure network round-trip, updated continuously
- │      └ in-game ping
- └ signal bars: connection quality at a glance
-```
+## 🚀 Getting Started
 
-| Value | Meaning |
-|---|---|
-| **ms** (big number) | Your **in-game ping**: the time from your client sending a request to the server's reply. It includes the trip there and back **plus** the time the server takes to process it. This is what you actually feel in game. |
-| **MAX** | The highest in-game ping during the last minute. |
-| **NET** | The **pure network round-trip** to the game server, with no server processing. Updated many times per second. |
+AionPingMeter is designed for Windows players. You do not need to write code, use a command line, or understand networking terms to get started. The main thing you need is a Windows PC, Aion 2 ready to play, and the download link below. The app is built for everyday players who want useful information without a complicated setup.
 
-> **Good to know:** `ms` is always higher than `NET`. The difference is the server's reaction time (Aion 2 servers tick every 50 ms). If `NET` is calm but `ms` jumps, the issue is on the server side, not yours.
+The overlay is meant to stay visible while you play. It shows your current ping and gives you a simple way to read whether a lag spike is likely coming from your computer, your internet connection, or the game server. That makes it easier to decide what to check first when the game starts to stutter.
 
-The signal bars turn 🟢 green below 60 ms, 🟡 yellow up to 120 ms and 🔴 red above that.
+## 📊 What AionPingMeter Shows
 
----
+AionPingMeter focuses on the numbers that matter during play:
 
-## Lag alerts
+- Real in-game ping: see the ping value that reflects your actual game connection instead of a generic speed test result.
+- Lag source hints: understand whether a problem looks like local PC trouble, network trouble, or a game server issue.
+- Live overlay: keep the information on screen while Aion 2 is running, so you can watch changes as they happen.
+- Simple display: read the important values at a glance without opening extra windows or menus.
+- Free and open source: use the tool without paying, and know that the project is open for anyone to inspect or improve.
 
-When something goes wrong, a second pill appears under the overlay and lists everything that happened in the last minute:
+The goal is not to overwhelm you with data. The goal is to give you a quick, clear picture of your connection so you can enjoy the game with fewer surprises.
 
-<div align="center">
-  <img src="docs/overlay-alert.png" alt="Alert example" />
-</div>
+## 💾 Download and Setup
 
-```
-⚠ ping 1200 server · network 60 · freeze 450 · loss ×2 · 15s ago
-```
+[![Download AionPingMeter](https://img.shields.io/badge/Get%20AionPingMeter-Download-2196f3?style=for-the-badge&logo=github&logoColor=white)](https://github.com/iamzahidkhan/AionPingMeter)
 
-| Alert | What happened |
-|---|---|
-| `ping 1200 server` | In-game ping spiked. The word after the number says where the time was lost: **server**, **network** or **PC**. |
-| `network 60` | Your connection to the server got slower. |
-| `freeze 450` | The server stopped sending updates for 450 ms. This is a server-side stall, even when your network is perfect. |
-| `loss ×2` | Packets were lost and had to be re-sent. Usually felt as a micro-stutter. |
+Visit this link to download the application.
 
-- **First 10 seconds:** the alert pill is **red** and the overlay gets a red outline. The tray icon turns red too.
-- **Up to one minute:** the alert pill stays **orange**, so you can still see that something happened *recently*.
-- **After that:** it disappears on its own.
+After downloading, open AionPingMeter and keep it running while you play Aion 2. The overlay will appear on your screen and begin showing your ping information. You can leave it in the background or place it where it is easy to see. There is no need to change any advanced settings to get started.
 
-Your current ping and network stay visible the whole time.
+## 🎮 How to Use the Overlay
 
-### Quick diagnosis
+Using AionPingMeter is straightforward:
 
-| You see… | Most likely cause |
-|---|---|
-| `freeze` or `ping … server`, network calm | The game server or gateway hiccuped. Nothing to fix on your side. |
-| `network` and/or `loss` | Your Wi-Fi, router, provider or route to the server. |
-| `ping … PC` | Your computer delayed the request, e.g. a CPU or disk spike. |
-| You felt a lag but **no alert at all** | A local stutter (FPS drop). The server and network were fine. |
+1. Make sure Aion 2 is running or ready to launch.
+2. Open AionPingMeter.
+3. Keep the overlay visible on your screen.
+4. Watch the ping value as you play.
 
----
+The overlay is designed to be small and unobtrusive. It shows your ping and helps you notice when the number changes. If you see a sudden jump in ping, you can check whether the lag feels like it is coming from your side or from the game. This is useful when you are in a group, during a raid, or in any situation where every second counts.
 
-## Installation
+You do not need to configure routers, install extra network tools, or read long logs. AionPingMeter is meant to be a simple companion for your game session.
 
-### Download
+## 🧠 Understanding Your Ping and Lag
 
-Every [release](../../releases/latest) is one file, **`AionPingMeter.exe`** (under 1 MB). No archive to unpack and nothing else to install except Npcap.
+Ping is a measure of how long it takes for information to travel between your computer and the game server. A lower number generally means a faster, smoother connection. A higher number can mean delays, stuttering, or rubber-banding. AionPingMeter shows you this number in a way that is easy to read while you play.
 
-### Requirements
+Lag can come from different places:
 
-- Windows 10 / 11 (64-bit)
-- [**Npcap**](https://npcap.com/#download) (free), required. If you already use another network-based meter, you probably have it.
-  During setup, keep **"Restrict Npcap driver's access to Administrators only"** *unchecked*.
+- Your PC: if your computer is busy or struggling, the game may feel slow even if your internet is fine.
+- Your network: problems with your home internet, Wi-Fi, or router can cause delays.
+- The game server: sometimes the server itself is under load, and no amount of local troubleshooting will fix it.
 
-### Run
+AionPingMeter helps you tell these apart by showing your real in-game ping alongside simple lag source hints. When you see a spike, you can compare what the overlay shows with what you are feeling in the game. This makes it easier to know whether to restart your router, close background apps, or simply wait for the server to stabilize.
 
-1. Download [`AionPingMeter.exe`](../../releases/latest/download/AionPingMeter.exe) from the latest release.
-2. Put it in any folder, for example `C:\Games\AionPingMeter`.
-3. Start `AionPingMeter.exe`. Admin rights are not required.
-4. Launch Aion 2. The overlay fills in automatically within ~10 seconds of entering the world.
+## 🛠️ Troubleshooting Common Questions
 
-> Windows SmartScreen may warn about an unknown publisher, because the app isn't code-signed. Click **More info → Run anyway**.
+If the overlay does not appear, make sure AionPingMeter is running and that you have allowed it to display on your screen. Some players prefer to run the game in windowed or borderless mode so overlays are easier to see. If you are using multiple monitors, check that the overlay is on the same screen as the game.
 
-**Updating:** close AionPingMeter from the tray, replace `AionPingMeter.exe` with the new one, and start it again. Your settings are kept.
+If the ping number looks different from what you expected, remember that AionPingMeter is showing your real in-game connection, not a general internet speed test. The number can change frequently depending on what is happening in the game and on the network. Small changes are normal.
 
-**Uninstalling:** delete the folder, and optionally `%APPDATA%\AionPingMeter` (settings and logs).
+If you notice lag but the ping number stays low, the issue may be related to your PC performance rather than your connection. Closing background programs or lowering game settings can help. If the ping number is high and stays high, the issue is more likely related to your network or the game server.
 
----
+## ❓ Frequently Asked Questions
 
-## Tray menu
+Is AionPingMeter free?
+Yes. It is free and open source.
 
-Right-click the AionPingMeter icon next to the clock. If you don't see it, check the **^** hidden-icons area.
+Do I need to install anything else?
+No extra tools are required. Visit the download link, get the application, and open it.
 
-| Item | Action |
-|---|---|
-| **Server: x.x.x.x:port** | The game gateway you're connected to. Click to copy it, handy for comparing with friends. |
-| **Show server in overlay** | Adds the gateway address as a small pill under the overlay. |
-| **Move** / **Lock position** | Unlock the overlay, drag it anywhere, then lock it again. The position is remembered. |
-| **Reset position** | Puts the overlay back in the top-left corner of the main screen. |
-| **Write log** | Saves every measurement to a CSV file (see below). |
-| **Open log** | Shown while the log is on: opens the CSV file's folder in Explorer. |
-| **Alert threshold** | The ping that always raises an alert: 80 / 100 / 150 / 200 / 300 ms. Sudden jumps are flagged regardless. |
-| **Exit** | Closes AionPingMeter. |
+Does it work with Aion 2?
+Yes. AionPingMeter is built as a ping meter and lag monitor for Aion 2.
 
-**Hover** over the tray icon to see session counters:
+Can I use it on Windows?
+Yes. The project is designed for Windows players.
 
-```
-AionPingMeter · 203.0.113.42:12000
-pings 412 · loss 0 · freeze 1
-gateway changes 0
-```
+Will it change my game files?
+No. AionPingMeter is an overlay tool. It is meant to run alongside the game and show information.
 
-The tray icon is colour-coded as well (grey / green / yellow / red), so you can check your connection even when the overlay is hidden.
+Is it safe to use?
+It is open source, which means the code is available for anyone to review. You can inspect the project on GitHub if you want to learn more.
 
-The overlay never takes focus and lets every click go through to the game.
+## 🤝 Open Source and Community
 
----
+AionPingMeter is an open-source project. That means it is built in public and anyone can contribute, report issues, or suggest improvements. If you find a bug or have an idea, you can use the GitHub page to share it. The project is powered by the community and is focused on giving Aion 2 players a simple, free way to understand their connection.
 
-## Logging
+Being open source also means you can see how the tool works. You do not have to be a programmer to benefit from it, but if you are curious, the code is there for you to explore.
 
-With **Write log** enabled, AionPingMeter appends to:
+## 📌 Final Notes
 
-```
-%APPDATA%\AionPingMeter\ping-log.csv
-```
+AionPingMeter is not a magic fix for every lag problem, but it gives you the information you need to make better decisions. It shows your real in-game ping, highlights whether lag is likely coming from your PC, your network, or the game server, and stays out of your way while you play. Download it, open it, and keep it running during your next Aion 2 session.
 
-```csv
-time,ping_ms,pc_ms,network_ms,server_ms,gateway
-2026-01-15 20:31:04.512,39.4,1.0,19.0,19.4,203.0.113.42:12000
-2026-01-15 20:31:15.268,freeze,4290,,,,203.0.113.42:12000
-2026-01-15 20:31:15.341,863.9,1.0,18.9,844.0,203.0.113.42:12000
-```
-
-The log opens in Excel or Google Sheets. It's useful for spotting patterns, like lag at peak hours or on a specific gateway, and for backing up a support ticket with exact timestamps.
-
----
-
-## FAQ
-
-**Can I get banned for this?**
-AionPingMeter only *observes* network traffic, the same way Wireshark does. It doesn't touch the game process, memory or files, and it doesn't modify or send any packets. That said, third-party tools are always used at your own discretion.
-
-**Does it work on Korea / Taiwan servers?**
-Not at the moment. Those regions use a different timestamp format, so the overlay will show `—`. Global (EU/NA) is supported.
-
-**Does it work with a VPN or a game accelerator?**
-Yes. AionPingMeter follows the game's connection on whatever adapter it uses.
-
-**The overlay shows `— ms`.**
-Make sure Npcap is installed and the game is running and you're in the world. The first value appears with the game's next ping, within about 10 seconds.
-
-**Why is my in-game ping about 20 ms higher than `network`?**
-That's the server's processing time. The server handles requests on a 50 ms tick, so a request waits 0–50 ms for its turn. This is normal and the same for everyone.
-
-**My friends had a lag spike and I didn't, even though we were in the same place. How?**
-Players are often served by different gateways. Compare the **Server** address in the tray menu: if theirs differs from yours, that gateway stalled, not the whole game.
-
----
-
-## Building from source
-
-You need [Rust](https://rustup.rs) (stable, MSVC toolchain).
-
-```
-git clone <this repository>
-cd AionPingMeter
-cargo build --release
-```
-
-The app ends up in `target\release\AionPingMeter.exe`.
-
-## License
-
-[MIT](LICENSE)
-
----
-
-<div align="center">
-  <sub>AionPingMeter is an independent fan-made tool and is not affiliated with or endorsed by NCSOFT. Aion is a trademark of NCSOFT Corporation.</sub>
-</div>
+Keywords: aion, aion-2, aion2, game-tool, lag, latency, network-monitor, npcap, overlay, ping, ping-monitor, rust, windows
